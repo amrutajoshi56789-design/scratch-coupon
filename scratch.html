@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scratch & Unlock Coupon</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    #scratch { width: 300px; height: 100px; background: gray; margin: auto; cursor: pointer; }
+    #coupon { display: none; font-size: 20px; margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>🎁 Scratch to Reveal Your Coupon</h2>
+  <div id="scratch"></div>
+  <div id="coupon"></div>
+
+  <script>
+    const coupons = [
+      { code: "TRAIN500-1", discount: 500 },
+      { code: "TRAIN1000-1", discount: 1000 },
+      { code: "TRAIN500-2", discount: 500 },
+      { code: "TRAIN1000-2", discount: 1000 }
+    ];
+
+    document.getElementById("scratch").addEventListener("click", function() {
+      // Pick random coupon
+      const selected = coupons[Math.floor(Math.random() * coupons.length)];
+      
+      document.getElementById("coupon").innerHTML = 
+        `🎉 Congrats! You unlocked <br> Coupon Code: <b>${selected.code}</b> <br> Discount: ₹${selected.discount}`;
+      
+      document.getElementById("coupon").style.display = "block";
+      this.style.display = "none"; // hide scratch box
+    });
+  </script>
+</body>
+</html>
